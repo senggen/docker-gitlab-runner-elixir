@@ -10,10 +10,7 @@ RUN curl -s https://packages.gitlab.com/install/repositories/runner/gitlab-ci-mu
     apt-get clean && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
-
-ADD entrypoint /
-RUN chmod +x /entrypoint
     
 VOLUME ["/etc/gitlab-runner", "/home/gitlab-runner"]
-ENTRYPOINT ["/usr/bin/dumb-init", "/entrypoint"]
+ENTRYPOINT ["/usr/bin/dumb-init", "gitlab-ci-multi-runner"]
 CMD ["run", "--user=gitlab-runner", "--working-directory=/home/gitlab-runner"]
