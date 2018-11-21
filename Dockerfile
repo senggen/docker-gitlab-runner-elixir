@@ -13,6 +13,6 @@ RUN apt-get update -y && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
     
-VOLUME ["/etc/gitlab-runner", "/home/gitlab-runner"]
+VOLUME ["/etc/gitlab-runner", "/etc/gitlab-runner"]
 ENTRYPOINT ["/usr/bin/dumb-init", "gitlab-ci-multi-runner"]
 CMD ["run", "--user=root", "--working-directory=/home/gitlab-runner"]
